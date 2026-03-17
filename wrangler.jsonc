@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "void",
+  "compatibility_date": "2024-11-01",
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "void",
+      "database_id": "1da18416-e6c0-4f3b-a8ad-e3619a11051e",
+      "migrations_dir": "server/db/migrations"
+    }
+  ],
+  "observability": {
+    "enabled": true
+  }
+}

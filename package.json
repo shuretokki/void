@@ -1,0 +1,38 @@
+{
+  "name": "void",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "lint": "eslint .",
+    "typecheck": "nuxt typecheck"
+  },
+  "dependencies": {
+    "@formkit/auto-animate": "0.9.0",
+    "@iconify-json/lucide": "^1.2.98",
+    "@iconify-json/simple-icons": "^1.2.74",
+    "@libsql/client": "^0.17.0",
+    "@nuxt/fonts": "latest",
+    "@nuxt/ui": "^4.5.1",
+    "@nuxthub/core": "0.10.7",
+    "@pinia/nuxt": "0.11.3",
+    "@vueuse/nuxt": "14.2.1",
+    "drizzle-orm": "^0.45.1",
+    "nuxt": "^4.4.2",
+    "nuxt-auth-utils": "0.5.29",
+    "nuxt-booster": "3.3.2",
+    "nuxt-icons": "4.0.0",
+    "tailwindcss": "^4.2.1"
+  },
+  "devDependencies": {
+    "@nuxt/eslint": "^1.15.2",
+    "drizzle-kit": "^0.31.10",
+    "eslint": "^10.0.3",
+    "typescript": "^5.9.3",
+    "vue-tsc": "^3.2.5"
+  },
+  "packageManager": "pnpm@10.32.1"
+}

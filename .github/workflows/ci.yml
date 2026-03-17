@@ -1,0 +1,28 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install Nix
+        uses: DeterminateSystems/determinate-nix-action@v11
+
+      - name: FlakeHub Cache
+        uses: DeterminateSystems/flakehub-cache-action@v1
+
+      - name: Flake Check
+        run: nix flake check
+
+      - name: Setup & Build
+        run: nix develop --command just setup build
+
+      - name: Full Check
+        run: nix develop --command just check

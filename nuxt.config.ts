@@ -1,0 +1,50 @@
+// https://nuxt.com/docs/api/configuration/nuxt-config
+export default defineNuxtConfig({
+  modules: [
+    '@nuxt/eslint',
+    '@nuxt/ui',
+    '@formkit/auto-animate',
+    '@pinia/nuxt',
+    '@vueuse/nuxt',
+    'nuxt-booster',
+    'nuxt-auth-utils',
+    'nuxt-icons',
+    '@nuxt/fonts',
+    '@nuxthub/core'
+  ],
+
+  devtools: {
+    enabled: true
+  },
+
+  css: ['~/assets/css/main.css'],
+
+  routeRules: {
+    '/': { prerender: true }
+  },
+
+  compatibilityDate: '2025-01-15',
+
+  nitro: {
+    preset: 'cloudflare-pages'
+  },
+
+  hub: {
+    db: 'sqlite'
+  },
+
+  eslint: {
+    config: {
+      stylistic: {
+        commaDangle: 'never',
+        braceStyle: '1tbs'
+      }
+    }
+  },
+
+  fonts: {
+    families: [
+      { name: 'Outfit', provider: 'google' }
+    ]
+  }
+})
