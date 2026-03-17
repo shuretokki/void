@@ -27,7 +27,6 @@
         devShells.default = pkgs.mkShell {
           shellHook = config.pre-commit.installationScript + ''
             export COREPACK_HOME="$PWD/.cache/corepack"
-            export TYPST_FONT_PATHS="${pkgs.lib.makeSearchPath "share/fonts" [ pkgs.ibm-plex pkgs.montserrat pkgs.source-code-pro pkgs.jetbrains-mono ]}"
           '';
 
           packages = with pkgs; [
