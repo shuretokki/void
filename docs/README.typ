@@ -14,7 +14,7 @@
   fill: none,
   width: 800pt,
   height: auto,
-  margin: 0pt,
+  margin: 8pt,
 )
 
 #set text(
@@ -131,6 +131,6 @@
 #v(10pt)
 #align(center)[
   #text(size: 10pt, fill: secondary-color, font: "HarmonyOS Sans", style: "italic")[
-    Supported on NixOS, macOS, and Windows via PowerShell.
+    *Disclaimer:* This substrate is architected for cross-platform deterministic parity, optimized for deployment across NixOS, macOS, and native Windows environments.
   ]
 ]
