@@ -3,21 +3,48 @@
 
 @theme static {
   --font-sans: 'Outfit', sans-serif;
+  --font-rounded: 'Outfit', 'HarmonyOS Sans', sans-serif;
 
-  --color-green-50: #EFFDF5;
-  --color-green-100: #D9FBE8;
-  --color-green-200: #B3F5D1;
-  --color-green-300: #75EDAE;
-  --color-green-400: #00DC82;
-  --color-green-500: #00C16A;
-  --color-green-600: #00A155;
-  --color-green-700: #007F45;
-  --color-green-800: #016538;
-  --color-green-900: #0A5331;
-  --color-green-950: #052E16;
+  --color-duo-green: #58cc02;
+  --color-duo-green-dark: #46a302;
+  --color-duo-red: #ff4b4b;
+  --color-duo-red-dark: #d33131;
+  --color-duo-blue: #1cb0f6;
+  --color-duo-gray: #afafaf;
+  --color-duo-snow: #ffffff;
+  --color-duo-border: #e5e5e5;
+
+  --color-duo-dark-bg: #131f24;
+  --color-duo-dark-surf: #1f2d33;
+  --color-duo-dark-border: #37464f;
+  --color-duo-dark-text: #f1f7fb;
 }
 
-html,
-body {
-  font-family: 'Outfit', sans-serif;
+@layer base {
+
+  html,
+  body {
+    font-family: var(--font-rounded);
+    @apply bg-white text-[#4b4b4b] dark:bg-duo-dark-bg dark:text-duo-dark-text;
+  }
+}
+
+@layer components {
+  .duo-card {
+    @apply bg-white border-2 border-duo-border rounded-xl p-5 shadow-[0_4px_0_0_#e5e5e5];
+    @apply dark:bg-duo-dark-surf dark:border-duo-dark-border dark:shadow-[0_4px_0_0_#37464f];
+  }
+
+  .btn-duo {
+    @apply relative inline-flex items-center justify-center px-6 py-3 font-bold uppercase tracking-wider rounded-xl transition-all duration-75 active:translate-y-[2px] active:shadow-none;
+  }
+
+  .btn-duo-green {
+    @apply bg-duo-green text-white shadow-[0_4px_0_0_#46a302] hover:bg-[#61da04];
+  }
+
+  .btn-duo-secondary {
+    @apply bg-white text-duo-blue border-2 border-duo-border shadow-[0_4px_0_0_#e5e5e5] hover:bg-[#f7f7f7];
+    @apply dark:bg-duo-dark-surf dark:text-duo-blue dark:border-duo-dark-border dark:shadow-[0_4px_0_0_#37464f];
+  }
 }

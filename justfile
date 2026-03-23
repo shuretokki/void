@@ -40,6 +40,9 @@ build:
 deploy: build
     npx -y wrangler pages deploy dist
 
+preview: build
+    npx -y wrangler pages dev dist
+
 # watch and live-preview typst
 watch target="README":
     typst-live {{target}}.typ

@@ -8,203 +8,148 @@ useSeoMeta({
   title,
   description
 })
-
-const mcpServers = [
-  { name: 'Nuxt UI MCP', status: 'Healthy', details: 'Providing Component Metadata' },
-  { name: 'StitchMCP', status: 'Healthy', details: 'Generating Premium UI Designs' },
-  { name: 'Docus MCP', status: 'Healthy', details: 'Fetching Documentation' }
-]
 </script>
 
 <template>
-  <UContainer class="py-12 max-w-2xl">
-    <UCard>
-      <template #header>
+  <div class="min-h-screen py-12 font-rounded">
+    <UContainer class="max-w-2xl">
+      <UCard
+        class="mb-8 duo-card"
+        :ui="{ body: 'p-5' }"
+      >
         <div class="flex items-center justify-between">
-          <div class="flex items-center gap-3">
-            <UIcon
-              name="i-lucide-shield-check"
-              class="w-8 h-8 text-primary"
-            />
-            <h1 class="text-2xl font-bold font-sans">
-              System Check
-            </h1>
-          </div>
-          <UBadge
-            variant="subtle"
-            color="success"
-          >
-            v1.0.0-void
-          </UBadge>
-        </div>
-      </template>
-
-      <div class="space-y-8">
-        <!-- 1. Nix & Logic Layer -->
-        <section>
-          <div class="flex items-center gap-2 mb-4">
-            <UIcon name="i-lucide-container" />
-            <h2 class="font-bold">
-              Nix & Core Environment
-            </h2>
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <UCard
-              variant="soft"
-              class="p-2 text-center"
-            >
-              <p class="text-xs opacity-70">
-                Node Version
-              </p>
-              <p class="font-mono font-bold">
-                {{ status?.env.nodeVersion || '...' }}
-              </p>
-            </UCard>
-            <UCard
-              variant="soft"
-              class="p-2 text-center"
-            >
-              <p class="text-xs opacity-70">
-                NuxtHub Binding
-              </p>
-              <p class="font-mono font-bold text-green-500">
-                {{ status?.env.hub || 'Inactive' }}
-              </p>
-            </UCard>
-          </div>
-        </section>
-
-        <USeparator />
-
-        <!-- 2. Database Layer (Drizzle & NuxtHub) -->
-        <section>
-          <div class="flex items-center gap-2 mb-4">
-            <UIcon name="i-lucide-database" />
-            <h2 class="font-bold underline decoration-primary underline-offset-4">
-              Data & Persistence
-            </h2>
-          </div>
-          <div class="flex items-center justify-between p-4 bg-gray-50 dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700">
-            <div>
-              <p class="text-sm font-medium">
-                Cloudflare D1 Driver
-              </p>
-              <p class="text-[10px] text-muted-foreground">
-                server/db/migrations/*
-              </p>
-            </div>
-            <UBadge
-              variant="subtle"
-              :color="status?.db.status === 'Connected' ? 'success' : 'error'"
-            >
-              {{ status?.db.status }}
-            </UBadge>
-          </div>
-          <div class="mt-4 flex gap-4 justify-center">
-            <div class="text-center">
-              <p class="text-[10px] uppercase opacity-50">
-                Active Rooms
-              </p>
-              <p class="text-xl font-bold">
-                {{ status?.db.roomCount }}
-              </p>
-            </div>
-            <div class="text-center">
-              <p class="text-[10px] uppercase opacity-50">
-                ORM
-              </p>
-              <p class="text-sm font-medium">
-                Drizzle v0.39+
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <USeparator />
-
-        <!-- 3. UI/UX Verification -->
-        <section>
-          <div class="flex items-center gap-2 mb-4">
-            <UIcon name="i-lucide-palette" />
-            <h2 class="font-bold underline decoration-success underline-offset-4">
-              UI/UX Verification
-            </h2>
-          </div>
-          <div class="grid grid-cols-2 gap-4">
-            <div class="space-y-4">
-              <UButton
-                class="w-full btn-macaroon font-bold"
-                color="primary"
-              >
-                Macaroon Blue
-              </UButton>
-              <UButton
-                class="w-full btn-macaroon font-bold"
-                color="secondary"
-              >
-                Macaroon Mint
-              </UButton>
-            </div>
-            <div class="flex flex-col justify-center items-center p-4 bg-white dark:bg-black/20 rounded-xl border border-dashed border-gray-200 dark:border-gray-700">
-              <p class="text-[10px] text-center opacity-70 mb-2 uppercase">
-                Custom Glassmorphism
-              </p>
-              <div class="w-12 h-12 rounded-full bg-gradient-to-tr from-primary to-success blur-xl opacity-20 absolute" />
+          <div class="flex items-center gap-4">
+            <div class="w-12 h-12 bg-duo-green rounded-xl flex items-center justify-center shadow-[0_3px_0_0_#46a302]">
               <UIcon
-                name="i-lucide-sparkles"
-                class="w-6 h-6 animate-pulse text-success"
+                name="i-lucide-shield-check"
+                class="w-7 h-7 text-white"
               />
             </div>
-          </div>
-        </section>
-
-        <USeparator />
-
-        <!-- 4. MCP & Documentation Integration -->
-        <section>
-          <div class="flex items-center gap-2 mb-4">
-            <UIcon name="i-lucide-cpu" />
-            <h2 class="font-bold underline decoration-warning underline-offset-4">
-              MCP Servers & Docs
-            </h2>
-          </div>
-          <div class="space-y-3">
-            <div
-              v-for="mcp in mcpServers"
-              :key="mcp.name"
-              class="flex items-center justify-between text-xs p-2 rounded-lg bg-gray-50/50 dark:bg-gray-800/50"
-            >
-              <div class="flex items-center gap-2">
-                <div class="w-2 h-2 rounded-full bg-success animate-pulse" />
-                <span class="font-bold">{{ mcp.name }}</span>
-              </div>
-              <span class="opacity-60 text-[10px]">{{ mcp.details }}</span>
+            <div>
+              <h1 class="text-2xl font-black text-[#4b4b4b] dark:text-white tracking-tight uppercase">
+                System Check
+              </h1>
+              <p class="text-xs font-bold text-duo-gray uppercase">
+                Level 1: Initialization
+              </p>
             </div>
           </div>
-        </section>
+          <div class="flex items-center gap-2 px-3 py-1 bg-[#fff8e1] border-2 border-[#ffc800] rounded-full shadow-[0_2px_0_0_#ffc800]">
+            <UIcon
+              name="i-lucide-flame"
+              class="text-[#ff9600]"
+            />
+            <span class="font-black text-[#ff9600]">14</span>
+          </div>
+        </div>
+      </UCard>
 
-        <!-- Final Action -->
-        <section class="pt-6">
+      <div class="space-y-6">
+        <UCard
+          class="relative overflow-hidden duo-card"
+          :ui="{ body: 'p-5' }"
+        >
+          <div class="absolute top-0 right-0 w-16 h-16 bg-duo-green opacity-5 -mr-4 -mt-4 rounded-full" />
+
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-8 h-8 rounded-full bg-duo-blue text-white flex items-center justify-center font-black text-sm shadow-[0_2px_0_0_#1899d6]">1</span>
+            <h2 class="text-lg font-black text-[#4b4b4b] dark:text-white uppercase tracking-wide">
+              Environment
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4">
+            <div class="p-4 border-2 border-duo-border dark:border-duo-dark-border rounded-xl bg-gray-50/50 dark:bg-duo-dark-surf/50">
+              <p class="text-[10px] font-black text-duo-gray uppercase mb-1">
+                Node Agent
+              </p>
+              <p class="text-lg font-black text-[#4b4b4b] dark:text-white">
+                {{ status?.env.nodeVersion }}
+              </p>
+            </div>
+            <div class="p-4 border-2 border-duo-border dark:border-duo-dark-border rounded-xl bg-gray-50/50 dark:bg-duo-dark-surf/50">
+              <p class="text-[10px] font-black text-duo-gray uppercase mb-1">
+                Platform
+              </p>
+              <p class="text-lg font-black text-duo-green uppercase italic">
+                {{ status?.env.platform }}
+              </p>
+            </div>
+          </div>
+        </UCard>
+
+        <UCard
+          class="duo-card"
+          :ui="{ body: 'p-5' }"
+        >
+          <div class="flex items-center gap-3 mb-6">
+            <span class="w-8 h-8 rounded-full bg-duo-red text-white flex items-center justify-center font-black text-sm shadow-[0_2px_0_0_#d33131]">2</span>
+            <h2 class="text-lg font-black text-[#4b4b4b] dark:text-white uppercase tracking-wide">
+              Persistence
+            </h2>
+          </div>
+
+          <div class="space-y-4">
+            <div class="flex items-center justify-between p-4 border-2 border-duo-border dark:border-duo-dark-border rounded-2xl bg-[#fdfdfd] dark:bg-duo-dark-surf">
+              <div class="flex items-center gap-4">
+                <UIcon
+                  name="i-lucide-database"
+                  class="w-8 h-8 text-duo-blue"
+                />
+                <div>
+                  <p class="font-black text-[#4b4b4b] dark:text-white">
+                    Cloudflare D1 Stack
+                  </p>
+                  <p class="text-[10px] font-bold text-duo-gray uppercase">
+                    SQLite Determinism
+                  </p>
+                </div>
+              </div>
+              <UBadge
+                size="sm"
+                variant="subtle"
+                :color="status?.db.status === 'Connected' ? 'success' : 'error'"
+                class="font-black border-2 rounded-full px-4 dark:bg-opacity-20"
+              >
+                {{ status?.db.status }}
+              </UBadge>
+            </div>
+
+            <div class="space-y-2">
+              <UProgress
+                :value="Math.min((status?.db.roomCount ?? 0) * 10, 100)"
+                size="xl"
+                class="h-4"
+                :ui="{
+                  indicator: 'bg-duo-blue shadow-[inset_0_-2px_0_0_#1899d6]',
+                  base: 'bg-duo-border dark:bg-duo-dark-border rounded-full'
+                }"
+              />
+              <div class="flex justify-between text-[10px] font-black text-duo-gray uppercase">
+                <span>Rooms Occupied</span>
+                <span class="text-duo-blue">{{ status?.db.roomCount }} / 100</span>
+              </div>
+            </div>
+          </div>
+        </UCard>
+
+        <footer class="pt-8 text-center space-y-6">
           <UButton
-            class="w-full py-6 text-xl font-black uppercase tracking-tighter shadow-xl"
-            color="success"
-            icon="i-lucide-refresh-cw"
-            block
+            class="btn-duo btn-duo-green w-full text-xl h-16 justify-center !p-0"
             :loading="pending"
             @click="() => refresh()"
           >
-            Re-Verify Full Stack
+            <span class="font-black tracking-wider uppercase">Click Here</span>
           </UButton>
-          <div class="flex justify-between items-center mt-6 text-[9px] text-muted-foreground uppercase font-mono">
-            <span>PLATFORM: {{ status?.env.platform }}</span>
-            <span>DATE: {{ status?.timestamp.split('T')[0] }}</span>
-          </div>
-        </section>
+
+          <p class="text-[10px] font-black text-duo-gray uppercase tracking-widest">
+            Void • {{ status?.timestamp?.split('T')[0] }}
+          </p>
+        </footer>
       </div>
-    </UCard>
-  </UContainer>
+    </UContainer>
+  </div>
 </template>
 
 <style scoped>
-/* Scoped test for the Macaroon utility added to main.css */
 </style>

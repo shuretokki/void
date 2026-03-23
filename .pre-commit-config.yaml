@@ -1,1 +1,10 @@
-/nix/store/0x9dzqzhbjpaq8j9m3xqv2s76rbpjvz5-pre-commit-config.json
+default_stages: [pre-commit]
+repos:
+  - repo: local
+    hooks:
+      - id: actionlint
+        name: actionlint
+        entry: actionlint
+        files: ^.github/workflows/
+        types: [yaml]
+        language: system
